@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LINKED LIST-INTRODUCTION</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" integrity="sha512-8qx1DL/2Wsrrij2TWX5UzvEaYOFVndR7BogdpOyF4ocMfnfkw28qt8ULkXD9Tef0bLvh3TpnSAljDC7uyniEuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Fredoka+One&family=Marck+Script&family=Merienda:wght@700&family=Parisienne&family=Source+Code+Pro:wght@600&family=Varela+Round&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/monokai.css"
+    />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Source+Code+Pro:wght@300&family=Spartan:wght@500&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css">
+   <!--  <link rel="stylesheet" href="query.css"> -->
+
+
+  </head>
+  <body>
+            <div class="article1">
+    <div class="article-1-outerbox">
+        <div class="Circles hide-on-med-and-down">
+            <div class="c1"></div>
+            <div class="c2"></div>
+        </div>
+        <div class="topic-name">
+            <p>LINKED LIST-INTRODUCTION</p> 
+        </div>
+        <a class="ca3-scroll-down-link ca3-scroll-down-arrow " data-ca3_iconfont="ETmodules" data-ca3_icon="">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+        <br><br><br><br>
+        <div class="qoute">
+            <br><br>
+            <p>
+                You may choose to look the other way but you can never say again that you did not know.
+                <br>
+                 — William Wilberforce
+            </p>
+            <i class="fa fa-quote-right qoute-icon"></i>
+        </div>
+    </div>
+    <div class="question-logo"><i class="fa fa-quora"></i></div>
+    <div class="ques-info">LINKED LIST-INTRODUCTION</div>
+    <div class="article-info">
+        <div class="article-divider" style="margin-top:0px ;"></div>
+        <div class="article-content">
+            <div class="content">
+                <p>
+                   Hey coder. Welcome to this article where we are going to start with a new data structure “Linked List”.
+                </p>
+                <p>Since you have already studied Arrays, we want to explain Linked Lists by comparing them with Arrays.</p>
+                <p>So, we will first discuss Arrays and then see how it contrasts with Linked Lists.</p>
+                <p><b>Important Links:</b> <a href="https://www.youtube.com/watch?v=GVwbTCnZ5kk&t=4s" target="_blank">Question video</a><!-- , <a href="https://www.youtube.com/watch?v=S4mBBDfvWCE" target="_blank">Solution video</a> --></p>
+            </div>
+
+           <!--  <div class="youtube-video">
+              <iframe width="640" height="360" src="https://www.youtube.com/embed/HK9ZRogP_98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div> -->
+        </div>
+        
+        <div class="understandingProb">
+            <div class="sub-heading-1">PROBLEM DISCUSSION: </div>
+            <div class="sub-heading-2">ARRAYS </div>
+            <div class="content">
+                <p>
+                    Let’s suppose we declare the following array:
+                </p>
+                <p>Reader, make sure that all the functions run in constant time.</p>
+                <p>Also memory should be optimally used i.e. one of the stacks can use more elements in the array but overflow should not happen before the whole array is used.</p>
+                
+            </div>
+        </div>
+        <div class="approach" id="approach">
+            <div class="sub-heading-1">Approach:</div>
+            <div class="content">
+               <p>Let’s start with the discussion of the solution now.</p>
+               <p>In  a normal stack, we had a “tos” (top of the stack) pointer which kept on increasing as we kept on pushing into the stack.</p>
+               <p>Now that we have to form 2 stacks we will keep two tos.</p>
+               <p>We keep tos1 at -1 index and tos2 at data.length index (see figure1).</p>
+                <div class="img"><img src="./images/image1.PNG" alt="img" /></div>
+               <p>So, our first stack starts from the start of the stack and the second stack starts from the end of the stack.</p>
+               <p>If we have to push2 20 and then push1 10 in the respective stacks then it would look like as shown in figure 2. Here tos2 will decrease by an index and tos1 will increase by an index.</p>
+                <div class="img"><img src="./images/image2.PNG" alt="img" /></div>
+               <p>After Figure 2, try to write how would the pushing take place if following commands are to be performed :</p> 
+                <div class="img"><img src="./images/image3.PNG" alt="img" /></div>
+
+               <p>The array would look like figure 4.</p>
+                <div class="img"><img src="./images/image4.PNG" alt="img" /></div>
+              <p>Now if we want to Push1 60 then we won’t be able to do so because together, both the stacks have filled the entire array.</p>
+              <p>From figure 4, we can also say if <b>tos2=tos1+1 then no more elements can be pushed</b> and stacks have been overflowed.</p>
+
+
+            </div>
+        </div>
+        <!-- <div class="pseudoCode article-box-shadow">
+            <div class="sub-heading-1">Pseudo Code:</div>
+            <div class="content">
+                <ol>
+                    <li>
+                        Add: We will not implement the add method directly. Rather, we will first pop all the elements from the main stack and push them into the helper stack. Then, we will add the new element to the main stack and pop all the elements from the helper stack, and push them to the main stack.
+
+                    </li>
+                    <li>
+                        Peek: We will use the peek method of the stack and it will give us the top value of the main stack. This will be the same as the front value of the queue.
+                    </li>
+                    <li>
+                      Size: It is also very simple. Just return the size of the main stack.
+
+                    </li>
+                    <li>iRemove: Simply pop a value from the main stack. This will remove the value from the front of the queue.</li>
+                </ol>
+                
+            </div>
+        </div> -->
+        <div class='codeEditor' id=>
+            <div class='editorialCode'>
+              import java.io.*;
+              import java.util.*;
+               
+              public class Main {
+               
+                public static class TwoStack {
+                  int[] data;
+                  int tos1;
+                  int tos2;
+               
+                  public TwoStack(int cap) {
+                    data=new int[cap];
+                    tos1=-1;
+                    tos2=data.length;
+                  }
+               
+                  int size1() {
+                    return tos1+1;
+                  }
+               
+                  int size2() {
+                    return data.length-tos2;
+                  }
+               
+                  void push1(int val) {
+                    if(tos2==tos1+1){
+                        System.out.println("Stack overflow");
+                        
+                    }else{
+                        tos1++;
+                        data[tos1]=val;
+                    }
+                  }
+               
+                  void push2(int val) {
+                    if(tos2==tos1+1){
+                        System.out.println("Stack overflow");
+                        
+                    }else{
+                        tos2--;
+                        data[tos2]=val;
+                    }
+                  }
+               
+                  int pop1() {
+                    if(size1()==0){
+                        System.out.println("Stack underflow");
+                        return -1;
+                        
+                    }else{
+                        int val=data[tos1];
+                        tos1--;
+                        return val;
+                    }
+                  }
+               
+                  int pop2() {
+                    if(size2()==0){
+                        System.out.println("Stack underflow");
+                        return -1;
+                    }else{
+                        int val=data[tos2];
+                        tos2++;
+                        return val;
+                    }
+                  }
+               
+                  int top1() {
+                    if(size1()==0){
+                        System.out.println("Stack underflow");
+                        return -1;
+                    }else{
+                        int val=data[tos1];
+                        return val;
+                    }
+                  }
+               
+                  int top2() {
+                    if(size2()==0){
+                        System.out.println("Stack underflow");
+                        return -1;
+                    }else{
+                        int val=data[tos2];
+                        return val;
+                    }
+                  }
+                }
+               
+                public static void main(String[] args) throws Exception {
+                  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                  int n = Integer.parseInt(br.readLine());
+                  TwoStack st = new TwoStack(n);
+               
+                  String str = br.readLine();
+                  while (str.equals("quit") == false) {
+                    if (str.startsWith("push1")) {
+                      int val = Integer.parseInt(str.split(" ")[1]);
+                      st.push1(val);
+                    } else if (str.startsWith("pop1")) {
+                      int val = st.pop1();
+                      if (val != -1) {
+                        System.out.println(val);
+                      }
+                    } else if (str.startsWith("top1")) {
+                      int val = st.top1();
+                      if (val != -1) {
+                        System.out.println(val);
+                      }
+                    } else if (str.startsWith("size1")) {
+                      System.out.println(st.size1());
+                    } else if (str.startsWith("push2")) {
+                      int val = Integer.parseInt(str.split(" ")[1]);
+                      st.push2(val);
+                    } else if (str.startsWith("pop2")) {
+                      int val = st.pop2();
+                      if (val != -1) {
+                        System.out.println(val);
+                      }
+                    } else if (str.startsWith("top2")) {
+                      int val = st.top2();
+                      if (val != -1) {
+                        System.out.println(val);
+                      }
+                    } else if (str.startsWith("size2")) {
+                      System.out.println(st.size2());
+                    }
+                    str = br.readLine();
+                  }
+                }
+              }
+
+            </div>
+            <pre class='output'>
+            </pre>
+            <span type='text' class='language' style='width:40%;margin-right:5%'>Java</span>;
+            <span type='text' style='width:40%' class='canRunCode' name='canRunCode'>true</span>";
+        </div>
+        <div class="content">
+          <div class="sub-heading-2">CODE DISCUSSION</div>
+            <p>We try to discuss each function one by one.
+            </p>
+                <div class="img"><img src="./images/image5.PNG" alt="img" /></div>
+            <p>We have already been provided the above information in our question.</p>
+            <p><b>CONSTRUCTOR-</b></p>
+                <div class="img"><img src="./images/image6.PNG" alt="img" /></div>
+                <div class="img"><img src="./images/image7.PNG" alt="img" /></div>
+
+            <p>We make an array “data” of the given length “cap” and assign tos1 and tos2 with -1 and data.length respectively.</p>   
+
+            <p><b>PUSH-</b></p>
+            <p>Push 1</p>
+                <div class="img"><img src="./images/image8.PNG" alt="img" /></div>
+            <p>As already discussed in “What” if tos2==tos1+1 then we print Stack overflowed. Else we increase “tos1” by an index and store the given value to that index in the array.</p>   
+            <p>Push2-</p> 
+                <div class="img"><img src="./images/image9.PNG" alt="img" /></div>
+            <p>Similarly, if tos2==tos1+1 then we print Stack overflowed. Else we decrease “tos2” by an index and store the given value to that index in the array.</p>
+            
+            <p><b>SIZE-</b></p> 
+            <p>size1-</p>   
+                <div class="img"><img src="./images/image11.PNG" alt="img" /></div>
+            <p>As seen from figure 4, the first stack is from index 0 to index 2 hence the size of the stack1 is 3 i.e. tos1+1.</p>  
+            <p>size2-</p> 
+                <div class="img"><img src="./images/image12.PNG" alt="img" /></div>
+            <p>Similarly, as seen from figure 4, the second stack is from index 4 to index 3 hence the size of the stack2 is 2 i.e. 5-3 or data.length-tos2.</p>    
+
+            <p><b>TOP-</b></p>
+            <p>top1-</p>
+                <div class="img"><img src="./images/image13.PNG" alt="img" /></div>
+            <p>As seen from figure 4, if stack1 is empty then there is no top value. Else we return the value at tos1.</p> 
+            <p>top2-</p>
+                <div class="img"><img src="./images/image14.PNG" alt="img" /></div>
+            <p>Similarly, if stack2 is empty then there is no top value. Else we return the value at tos2.</p>  
+            <p><b>POP-</b></p>  
+            <p>pop1-</p>
+                <div class="img"><img src="./images/image15.PNG" alt="img" /></div>
+            <p>If stack1 is empty then no value can be popped. Else, as we have seen in the “What” section, the value at tos1 is returned and tos1 is decreased by an index.</p>    
+            <p>pop2-</p>
+                <div class="img"><img src="./images/image16.PNG" alt="img" /></div>
+            <p>Similarly, if stack2 is empty then no value can be popped. Else, the value at tos2 is returned and tos2 is increased by an index.</p>
+            <p>We have written all the required functions.</p>    
+        </div>
+       <!--  <div class="sub-heading-2">{{!--sample testcase heading--}}</div>
+        <div class="content">
+            <p>{{!--sample testcase information--}}
+            </p>
+            <div class="img"><img src="{{!--image source--}}" alt="img" /></div>
+        </div> -->
+        <div class="analysis">
+          <div class="sub-heading-1">
+                <p>Time  and Space Complexity Analysis:</p>
+            </div>
+            <div class="sub-heading-2">Time Complexity:</div>
+            <div class="content">
+              <p><b>O(1)</b></p>
+              <p>According to the question, all the functions are coded in constant time.</p>
+            
+            </div>
+
+            <div class="sub-heading-2">SPACE COMPLEXITY:</div>
+            <div class="content">
+              <p><b>O(n)</b></p>
+              <p>Since space is used optimally and stacks require n space, therefore, the complexity is linear.</p>
+            </div>
+        </div>
+        <div class="content">
+          <p>Now, we suggest you watch the solution video if there are any gaps in your understanding.</p>
+          <div class="youtube-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/S4mBBDfvWCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>Here, we conclude our article. This was the last question under “Stacks and Queues”. Next we will start with a new topic of “Linked Lists” so don’t forget to check it out. For now, Goodbye.</p>
+        </div>
+       
+        <div class="article-tags">
+            <div class="tag">Stack</div>
+            <div class="tag">Arrays</div>
+            
+        </div>
+        <div class="author">
+            <div class="sub-heading-1">AUTHOR</div>
+            <div class="article-contributor">
+                <div class="dummy"><img src="{{!--article contributor image--}}" alt="" /></div>
+                <div class="details">
+                    <span> <a href="">Shreeya Gupta</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="share-options">
+            <p class="share-options-heading">Share this article</p>
+            <div class="">
+                <div class="span"><i class="fa fa-facebook"></i>
+                    <p class="social-media-name">Facebook</p>
+                </div>
+                <div class="span"><i class="fa fa-twitter"></i>
+                    <p class="social-media-name">Twitter</p>
+                </div>
+                <div class="span"><i class="fa fa-instagram"></i>
+                    <p class="social-media-name">Instagram</p>
+                </div>
+                <div class="span"><i class="fa fa-whatsapp"></i>
+                    <p class="social-media-name">Whatsapp</p>
+                </div>
+                <div class="span"><i class="fa fa-linkedin"></i>
+                    <p class="social-media-name">Linkedin</p>
+                </div>
+            </div>
+        </div>
+        <div class="lineBreak" style="margin-top: 30px;"></div>
+        <div class="img-zoom-div">
+            <div class="img-zoom-div-close-btn"><i class="fa fa-times"></i></div>
+            <div class="img-zoom-div-img"><img src="" alt="" /></div>
+        </div>
+    </div>
+</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Fredoka+One&family=Marck+Script&family=Merienda:wght@700&family=Parisienne&family=Source+Code+Pro:wght@600&family=Varela+Round&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/monokai.css" />
+<link
+    href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Source+Code+Pro:wght@300&family=Spartan:wght@500&display=swap"
+    rel="stylesheet">
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script src="./closeZoomImgDiv.js"></script>
+    <script src="./bookmark.js"></script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+
+
+    var aceEditorInstance = ace.edit( "editor1" );
+
+
+aceEditorInstance.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+
+// editor 2
+  var aceEditorInstance2 = ace.edit( "editor2" );
+
+
+aceEditorInstance2.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance2.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+
+// editor 3
+  var aceEditorInstance3 = ace.edit( "editor3" );
+
+
+aceEditorInstance3.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance3.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+/**
+ * Global variable to store the ids of the status of the current dragged ace editor.
+ */
+window.draggingAceEditor = {};
+
+function makeAceEditorResizable(editor){
+    var id_editor = editor.container.id;
+    var id_dragbar = '#' + id_editor + '_dragbar';
+    var id_wrapper = '#' + id_editor + '_wrapper';
+    var wpoffset = 0;
+    window.draggingAceEditor[id_editor] = false;
+
+    $(id_dragbar).mousedown(function(e) {
+        e.preventDefault();
+
+        window.draggingAceEditor[id_editor] = true;
+    
+        var _editor = $('#' + id_editor);
+        var top_offset = _editor.offset().top - wpoffset;
+    
+        // Set editor opacity to 0 to make transparent so our wrapper div shows
+        _editor.css('opacity', 0);
+    
+        // handle mouse movement
+        $(document).mousemove(function(e){
+            var actualY = e.pageY - wpoffset;
+            // editor height
+            var eheight = actualY - top_offset;
+            
+            // Set wrapper height
+            $(id_wrapper).css('height', eheight);
+            
+            // Set dragbar opacity while dragging (set to 0 to not show)
+            $(id_dragbar).css('opacity', 0.15);
+        });
+    });
+    
+    $(document).mouseup(function(e){
+        if (window.draggingAceEditor[id_editor])
+        {
+            var ctx_editor = $('#' + id_editor);
+    
+            var actualY = e.pageY - wpoffset;
+            var top_offset = ctx_editor.offset().top - wpoffset;
+            var eheight = actualY - top_offset;
+    
+            $( document ).unbind('mousemove');
+            
+            // Set dragbar opacity back to 1
+            $(id_dragbar).css('opacity', 1);
+            
+            // Set height on actual editor element, and opacity back to 1
+            ctx_editor.css('height', eheight).css('opacity', 1);
+            
+            // Trigger ace editor resize()
+            editor.resize();
+
+            window.draggingAceEditor[id_editor] = false;
+        }
+    });
+}
+
+
+makeAceEditorResizable(aceEditorInstance);
+
+
+
+</script>
+
+<script>
+    var run = document.getElementsByClassName('run')[0]
+    var input = document.getElementById('custom_input')
+    var language = document.getElementById('language')
+    
+
+    run.addEventListener('click', function(){
+        
+        var unformatted = document.getElementById('editor1').innerText
+        var formatted = unformatted.split("\n")
+        var final = []
+        formatted.forEach(ele=>{
+            if(!parseInt(ele))
+            final.push(ele)
+        
+        })
+        final = final.join(' ')
+        
+        var input_text = input.value
+        var final_input_text = input_text.split('\n').join(' ')
+
+
+         
+        //language
+        const languageValue = language.options[language.selectedIndex].value;
+        //const text = language.options[language.selectedIndex].text;
+        
+        //fetch statement here...
+
+        // fetch('/compileCode',{
+        //     method:'post',
+        //     headers:{
+        //         'Content-Type':'appliation/json'
+        //     },
+        //     body:JSON.stringify({
+        //         input:final_input_text,
+        //         code:final,
+        //         language:languageValue
+        //     })
+        // })
+
+             
+        alert(JSON.stringify({"code":final, "testcase":final_input_text, "language": languageValue}))
+        }
+    )
+</script>
+<script>
+    //tabbar btn control
+    function tabBar(index){
+       
+        if(index===0){ 
+            // show input textarea
+            document.getElementById('custom_output').style.display='none'
+            document.getElementById('custom_input').style.display='block'
+            document.getElementById('tabBar_0').style.color='rgba(0, 0, 0, 1)'
+            document.getElementById('tabBar_1').style.color='rgba(0, 0, 0, 0.479)'
+        }
+        else{
+            // show output textarea
+            document.getElementById('custom_output').style.display='block'
+            document.getElementById('custom_input').style.display='none'
+            document.getElementById('tabBar_1').style.color='rgba(0, 0, 0, 1)'
+            document.getElementById('tabBar_0').style.color='rgba(0, 0, 0, 0.479)'
+        }
+    }
+    
+</script>
+  </body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find element in an Array</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" integrity="sha512-8qx1DL/2Wsrrij2TWX5UzvEaYOFVndR7BogdpOyF4ocMfnfkw28qt8ULkXD9Tef0bLvh3TpnSAljDC7uyniEuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Fredoka+One&family=Marck+Script&family=Merienda:wght@700&family=Parisienne&family=Source+Code+Pro:wght@600&family=Varela+Round&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/monokai.css"
+    />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Source+Code+Pro:wght@300&family=Spartan:wght@500&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css">
+   <!--  <link rel="stylesheet" href="query.css"> -->
+
+
+  </head>
+  <body>
+            <div class="article1">
+    <div class="article-1-outerbox">
+        <div class="Circles hide-on-med-and-down">
+            <div class="c1"></div>
+            <div class="c2"></div>
+        </div>
+        <div class="topic-name">
+            <p>Find element in an Array</p> 
+        </div>
+        <a class="ca3-scroll-down-link ca3-scroll-down-arrow " data-ca3_iconfont="ETmodules" data-ca3_icon="">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+        <br><br><br><br>
+        <div class="qoute">
+            <br><br>
+            <p>
+              It is better to have 100 functions operate on one data structure than operate 10 functions on 10 data structures.
+               <!--  <br>
+                 —Arthur Ashe -->
+            </p>
+            <i class="fa fa-quote-right qoute-icon"></i>
+        </div>
+    </div>
+    <div class="question-logo"><i class="fa fa-quora"></i></div>
+    <div class="ques-info">Find element in an Array</div>
+    <div class="article-info">
+        <div class="article-divider" style="margin-top:0px ;"></div>
+        <div class="article-content">
+            <div class="content">
+              <p>
+                Dear Readers, Let's now move to the next problem, that is ‘Find Element in an array’ under the topic ‘array and functions’.  So, reader, if you have already done or at least tried the  previous question which was about the span of an array, then this one is going to be as easy as pie for you. Just continue reading.  
+              </p>
+              <p><b>Important Links:</b> <a href="https://www.pepcoding.com/resources/online-java-foundation/function-and-arrays/find-element-in-array-official/ojquestion" target="_blank">Question link</a>, <a href="https://youtu.be/awuSQW2F0AM" target="_blank">Question video</a>, <a href="https://youtu.be/3AcyounXhfg" target="_blank">Solution video</a></p>
+             <p>It is advised that you give this problem a fair try before jumping to the solution.</p>
+           
+            </div>
+
+        </div>
+        
+        <div class="understandingProb">
+            <div class="sub-heading-1">PROBLEM DISCUSSION: </div>
+         
+            <div class="content">
+              <ul>
+                <li>Just like the previous question, first of all you will get a number n, which indicates the length of an array. Then you will get n more inputs corresponding to each index of the array. </li>
+                <li>After that you will be given one more input, d as data, for which you have to find, at which index of array d is present. And in case d is not present in the array then you need to print -1.</li>
+                
+              </ul>
+              <p>You may also watch the question video for better understanding of the question. </p>
+              <div class="youtube-video">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/awuSQW2F0AM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p>Before you move further, it is advised that you spend enough time to understand the question and give it a fair try .</p>
+                
+            </div>
+        </div>
+        <div class="approach" id="approach">
+            <div class="sub-heading-1">Approach:</div>
+            <div class="content">
+              <ul>
+                  <li>In order to solve this problem, we will use a for loop on the input array and check if a value equivalent to data is present or not. </li>
+                  <li>And if an equal value is present then we will print the index of this value and return. </li>
+                  <li>And if an equal value is not present then the control will come out of the for loop and we will return -1.</li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="pseudoCode article-box-shadow">
+            <div class="sub-heading-1">Pseudo Code:</div>
+            <div class="content">
+                <ul>
+                    <li>
+                        First of all we need to write an input statement for an integer n. 
+                    </li> 
+                    <li>
+                        This n, which represents length of the array will be helpful in defining an array say ‘arr’.
+                    </li>
+                    <li>
+                      Now, you need to run a for loop on the array with integer i, initialized to 0. Also satisfying the condition i < n and with an increment of one to i, in each iteration and inside this for loop you will be taking input for ith element of array arr. 
+                    </li>
+                    <li>After that take input for d (data); the value for which we need to find the index if the similar value is present in the array.
+                       <div class="img"><img src="./images/Find-element-Array_1.png" alt="img" /></div> 
+                       Our aim is to find the index of data in array arr, so give it a thought and try to figure out how you can find it.
+                       <br>
+                       It’s okay, if you couldn’t find it, don’t feel bad. Let’s look at it together.   
+                    </li> 
+                    <li>So for finding the index of data, it is required that data is present in the array. To check this, you need to apply a  loop on the array length. </li>
+                    <li>And then using conditional <b>( if(d == arr[i] ) )</b>, you can make sure that whether data is present in the array or not.  Whenever, <b>( if(d == arr[i] ) )</b> this condition is satisfied, index i will be printed and the return statement will restrict the further iterations of the loop and stop the execution. </li>
+                    <li>And in case, a value equivalent to data is present more than once in a given array, then the first index with value equal to data will be printed.</li>
+                    <li>Also in case, where value equivalent to data is not present in the array then, after control comes out of the for loop, -1 will be printed.
+                    </li>  
+                </ul>
+                <p>So  reader, if you still face any problem in understanding this part, we advise you to watch [1:47-3:40] portion of the video.</p>
+                    <div class="youtube-video">
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/awuSQW2F0AM?start=107&end=220" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                   <div class="img"><img src="./images/Find-element-Array_2.png" alt="img" /></div> 
+               <div class="sub-heading-2">For example:</div>   
+               <ul>
+                 <li>Let's assume, the user enters n as 5 in input and an array arr is initialized of length 5. </li>
+                 <li>So with the help of a for loop, values to each index of the array will be allocated. Let’s say you assigned 1, 2, 8, 5 and 3 as values to corresponding indices of arr. 
+                   <div class="img"><img src="./images/Find-element-Array_3.png" alt="img" /></div> 
+
+                 </li>
+                 <li>After that, a for loop will run on the array until a value equal to data is found.
+                   <div class="img"><img src="./images/Find-element-Array_4.png" alt="img" /></div> 
+                 </li>
+                 <li>In this case, 8 is present at index 2. So when the for loop will run for i = 2, at that time data will be equal to arr[2], therefore 2 (i) will be printed and then the return statement will be executed.</li>
+
+               </ul>
+            </div>
+        </div>
+
+        <div class='codeEditor' id=>
+            <div class='editorialCode'>
+             import java.io.*;
+              import java.util.*;
+               
+              public class Main{
+               
+              public static void main(String[] args) throws Exception {
+                  Scanner scn = new Scanner(System.in);
+                  int n = scn.nextInt();
+                  int[] arr = new int[n];
+               
+                  for (int i = 0; i < n; i++) {
+                    arr[i] = scn.nextInt();
+                  }
+               
+                  int d = scn.nextInt();
+               
+                  for(int i = 0; i < arr.length; i++){
+                     if(d == arr[i]){
+                       System.out.println(i);
+                       return;
+                     }
+                  }
+                  System.out.println(-1);
+               }
+               
+              }
+
+            </div>
+            <pre class='output'>
+            </pre>
+            <span type='text' class='language' style='width:40%;margin-right:5%'>Java</span>;
+            <span type='text' style='width:40%' class='canRunCode' name='canRunCode'>true</span>";
+        </div>
+        
+       <div class="analysis">
+          <div class="sub-heading-1">Time  and Space Complexity Analysis:</div>
+            <div class="sub-heading-2">Time Complexity:</div>
+            <div class="content">
+              <p><b>O(n)</b></p>
+              <p>A ‘for’ loop is used to find an equivalent value in the array; travelling the n sized array makes the time complexity O(n).</p>
+            
+            </div>
+
+            <div class="sub-heading-2">SPACE COMPLEXITY:</div>
+            <div class="content">
+              <p><b>O(1)</b></p>
+              <p>Since no extra space is used, therefore space complexity is constant.</p>
+            </div>
+        </div>
+        <div class="content">
+        
+          <p>So reader, we hope you understood the solution. Don’t worry if you are not able to solve this problem by yourself. However, if you still face any difficulties in the solution for the problem, you may check out the complete solution video.</p>
+          <div class="youtube-video">
+           <iframe width="640" height="360" src="https://www.youtube.com/embed/3AcyounXhfg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>Stay motivated and don’t burden yourself with stress. Forgive yourself and  be kind to yourself. Happy coding!</p>
+        </div>
+       
+        <div class="article-tags">
+            <div class="tag">Stack</div>
+            <div class="tag">Arrays</div>
+            
+        </div>
+        <div class="author">
+            <div class="sub-heading-1">AUTHOR</div>
+            <div class="article-contributor">
+                <div class="dummy"><img src="{{!--article contributor image--}}" alt="" /></div>
+                <div class="details">
+                    <span> <a href="">Nikita Aggarwal</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="share-options">
+            <p class="share-options-heading">Share this article</p>
+            <div class="">
+                <div class="span"><i class="fa fa-facebook"></i>
+                    <p class="social-media-name">Facebook</p>
+                </div>
+                <div class="span"><i class="fa fa-twitter"></i>
+                    <p class="social-media-name">Twitter</p>
+                </div>
+                <div class="span"><i class="fa fa-instagram"></i>
+                    <p class="social-media-name">Instagram</p>
+                </div>
+                <div class="span"><i class="fa fa-whatsapp"></i>
+                    <p class="social-media-name">Whatsapp</p>
+                </div>
+                <div class="span"><i class="fa fa-linkedin"></i>
+                    <p class="social-media-name">Linkedin</p>
+                </div>
+            </div>
+        </div>
+        <div class="lineBreak" style="margin-top: 30px;"></div>
+        <div class="img-zoom-div">
+            <div class="img-zoom-div-close-btn"><i class="fa fa-times"></i></div>
+            <div class="img-zoom-div-img"><img src="" alt="" /></div>
+        </div>
+    </div>
+</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Fredoka+One&family=Marck+Script&family=Merienda:wght@700&family=Parisienne&family=Source+Code+Pro:wght@600&family=Varela+Round&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/monokai.css" />
+<link
+    href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Source+Code+Pro:wght@300&family=Spartan:wght@500&display=swap"
+    rel="stylesheet">
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script src="./closeZoomImgDiv.js"></script>
+    <script src="./bookmark.js"></script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+
+
+    var aceEditorInstance = ace.edit( "editor1" );
+
+
+aceEditorInstance.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+
+// editor 2
+  var aceEditorInstance2 = ace.edit( "editor2" );
+
+
+aceEditorInstance2.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance2.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+
+// editor 3
+  var aceEditorInstance3 = ace.edit( "editor3" );
+
+
+aceEditorInstance3.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance3.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+/**
+ * Global variable to store the ids of the status of the current dragged ace editor.
+ */
+window.draggingAceEditor = {};
+
+function makeAceEditorResizable(editor){
+    var id_editor = editor.container.id;
+    var id_dragbar = '#' + id_editor + '_dragbar';
+    var id_wrapper = '#' + id_editor + '_wrapper';
+    var wpoffset = 0;
+    window.draggingAceEditor[id_editor] = false;
+
+    $(id_dragbar).mousedown(function(e) {
+        e.preventDefault();
+
+        window.draggingAceEditor[id_editor] = true;
+    
+        var _editor = $('#' + id_editor);
+        var top_offset = _editor.offset().top - wpoffset;
+    
+        // Set editor opacity to 0 to make transparent so our wrapper div shows
+        _editor.css('opacity', 0);
+    
+        // handle mouse movement
+        $(document).mousemove(function(e){
+            var actualY = e.pageY - wpoffset;
+            // editor height
+            var eheight = actualY - top_offset;
+            
+            // Set wrapper height
+            $(id_wrapper).css('height', eheight);
+            
+            // Set dragbar opacity while dragging (set to 0 to not show)
+            $(id_dragbar).css('opacity', 0.15);
+        });
+    });
+    
+    $(document).mouseup(function(e){
+        if (window.draggingAceEditor[id_editor])
+        {
+            var ctx_editor = $('#' + id_editor);
+    
+            var actualY = e.pageY - wpoffset;
+            var top_offset = ctx_editor.offset().top - wpoffset;
+            var eheight = actualY - top_offset;
+    
+            $( document ).unbind('mousemove');
+            
+            // Set dragbar opacity back to 1
+            $(id_dragbar).css('opacity', 1);
+            
+            // Set height on actual editor element, and opacity back to 1
+            ctx_editor.css('height', eheight).css('opacity', 1);
+            
+            // Trigger ace editor resize()
+            editor.resize();
+
+            window.draggingAceEditor[id_editor] = false;
+        }
+    });
+}
+
+
+makeAceEditorResizable(aceEditorInstance);
+
+
+
+</script>
+
+<script>
+    var run = document.getElementsByClassName('run')[0]
+    var input = document.getElementById('custom_input')
+    var language = document.getElementById('language')
+    
+
+    run.addEventListener('click', function(){
+        
+        var unformatted = document.getElementById('editor1').innerText
+        var formatted = unformatted.split("\n")
+        var final = []
+        formatted.forEach(ele=>{
+            if(!parseInt(ele))
+            final.push(ele)
+        
+        })
+        final = final.join(' ')
+        
+        var input_text = input.value
+        var final_input_text = input_text.split('\n').join(' ')
+
+
+         
+        //language
+        const languageValue = language.options[language.selectedIndex].value;
+        //const text = language.options[language.selectedIndex].text;
+        
+        //fetch statement here...
+
+        // fetch('/compileCode',{
+        //     method:'post',
+        //     headers:{
+        //         'Content-Type':'appliation/json'
+        //     },
+        //     body:JSON.stringify({
+        //         input:final_input_text,
+        //         code:final,
+        //         language:languageValue
+        //     })
+        // })
+
+             
+        alert(JSON.stringify({"code":final, "testcase":final_input_text, "language": languageValue}))
+        }
+    )
+</script>
+<script>
+    //tabbar btn control
+    function tabBar(index){
+       
+        if(index===0){ 
+            // show input textarea
+            document.getElementById('custom_output').style.display='none'
+            document.getElementById('custom_input').style.display='block'
+            document.getElementById('tabBar_0').style.color='rgba(0, 0, 0, 1)'
+            document.getElementById('tabBar_1').style.color='rgba(0, 0, 0, 0.479)'
+        }
+        else{
+            // show output textarea
+            document.getElementById('custom_output').style.display='block'
+            document.getElementById('custom_input').style.display='none'
+            document.getElementById('tabBar_1').style.color='rgba(0, 0, 0, 1)'
+            document.getElementById('tabBar_0').style.color='rgba(0, 0, 0, 0.479)'
+        }
+    }
+    
+</script>
+  </body>
+</html>

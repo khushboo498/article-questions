@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack to Queue Adapter- Remove Efficient</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" integrity="sha512-8qx1DL/2Wsrrij2TWX5UzvEaYOFVndR7BogdpOyF4ocMfnfkw28qt8ULkXD9Tef0bLvh3TpnSAljDC7uyniEuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Fredoka+One&family=Marck+Script&family=Merienda:wght@700&family=Parisienne&family=Source+Code+Pro:wght@600&family=Varela+Round&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/monokai.css"
+    />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Source+Code+Pro:wght@300&family=Spartan:wght@500&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="query.css"> -->
+
+    <style>
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* background-image: url("./images/bk.jpg"); */
+  height: fit-content;
+  width: 100%;
+}
+:root {
+  --eightPx: 0.5rem;
+  --sixteenPx: 1rem;
+  --eightyPx: 5rem;
+  --tenPx: 0.625rem;
+  --sixtyPx: 3.75rem;
+  --fourtyPx: 2.5rem;
+  --twentyPx: 1.25rem;
+  --seventyPx: 4.37rem;
+  --fiftyPx: 3.125rem;
+}
+
+li {
+  margin-bottom: var(--eightPx);
+  font-weight: 200;
+}
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+  font-family: "Heebo", sans-serif;
+}
+.comment__body {
+  display: flex;
+  flex-direction: column;
+}
+.textarea {
+  background-color: whitesmoke;
+  border-radius: var(--twentyPx);
+  margin-left: var(--seventyPx);
+  width: 90%;
+  height: var(--eightyPx);
+}
+.comment__button {
+  cursor: pointer;
+  margin-left: 87%;
+  width: fit-content;
+  margin-top: 10px;
+  background-color: red;
+  border: none;
+  padding: var(--eightPx);
+  color: white;
+  border-radius: 4px;
+}
+.prevComment {
+  margin-top: var(--fourtyPx);
+}
+.comment__prev {
+  margin-top: var(--sixteenPx);
+  margin-left: var(--sixtyPx);
+}
+.comment__prev > .author > .authorDetails > .comment__section > img {
+  width: 15px;
+  height: 15px;
+}
+.suggestion {
+  position: fixed;
+  top: 30%;
+  left: 5%;
+  min-height: 70%;
+  max-height: fit-content;
+}
+.suggestion__head {
+  font-family: "Poppins", sans-serif;
+}
+.articlesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  width: 60vw;
+  margin: auto;
+  padding: var(--fiftyPx) 0;
+  /* overflow: hidden; */
+  background-color: transparent;
+  position: relative;
+}
+
+p {
+  margin: 0;
+}
+
+.article-divider {
+  height: 1.5px;
+  background-color: gainsboro;
+  margin: 50px 0 20px 0;
+}
+.landingPg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.qoute {
+  width: 100%;
+  border-radius: var(--tenPx);
+  text-align: right;
+  font-family: "Poppins", sans-serif;
+  font-family: "Parisienne", cursive;
+  /* font-family: 'Merienda', cursive; */
+  /* font-family: 'Marck Script', cursive; */
+  font-size: 40px;
+  position: relative;
+  padding: 40px 170px 40px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.qoute > p {
+  width: 60%;
+}
+[data-ca3_icon]::before {
+  font-weight: normal;
+  content: attr(data-ca3_icon);
+}
+
+.ca3-scroll-down-arrow {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.ca3-scroll-down-arrow i {
+  color: rgba(255, 0, 0, 0.517);
+  height: 10px;
+  /* font-weight: 800; */
+}
+.ca3-scroll-down-link {
+  cursor: pointer;
+  height: 30px;
+  width: 60px;
+  margin: 0px 0 0 -40px;
+  line-height: 60px;
+  position: absolute;
+  left: 15%;
+  bottom: 100px;
+  /* color: #fe5d00; */
+  text-align: center;
+  font-size: 70px;
+  text-decoration: none;
+  text-shadow: 0px 0px 3px rgba(228, 15, 15, 0.4);
+
+  -webkit-animation: ca3_fade_move_down 2s ease-in-out infinite;
+  -moz-animation: ca3_fade_move_down 2s ease-in-out infinite;
+  animation: ca3_fade_move_down 2s ease-in-out infinite;
+}
+
+/*animated scroll arrow animation*/
+@-webkit-keyframes ca3_fade_move_down {
+  0% {
+    -webkit-transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+@-moz-keyframes ca3_fade_move_down {
+  0% {
+    -moz-transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+@keyframes ca3_fade_move_down {
+  0% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+
+.c1 {
+  background-color: gainsboro;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #e7e7e7;
+  right: 80px;
+  top: 80px;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.c2 {
+  background-color: rgba(255, 0, 0, 0.517);
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+  right: 160px;
+  top: 150px;
+}
+.qoute > p::before {
+  content: " ";
+  width: 363px;
+  height: 15px;
+  background-color: rgba(255, 0, 0, 0.517);
+  position: absolute;
+  bottom: 20px;
+  right: 170px;
+  border-radius: 20px;
+}
+.qoute::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f10e";
+  display: inline-block;
+  padding-right: 3px;
+  vertical-align: middle;
+  font-weight: 900;
+  color: grey;
+  position: absolute;
+  top: 20px;
+  right: 120px;
+}
+
+.topic-name > p {
+  width: 70%;
+  display: flex;
+  padding-left: 100px;
+  padding-top: 70px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-weight: bold;
+  font-size: var(--sixtyPx);
+  text-align: left;
+  margin-bottom: 60px;
+  font-family: "Spartan", sans-serif;
+  font-family: "Asap", sans-serif;
+  /* font-family: "Fredoka One", cursive; */
+  /* font-family: "Source Code Pro", monospace; */
+  font-family: "Varela Round", sans-serif;
+  position: relative;
+  font-weight: bolder;
+}
+.topic-name > p::after {
+  content: " ";
+  background-color: gainsboro;
+  width: 600px;
+  height: 20px;
+  position: absolute;
+  bottom: -70px;
+  left: 230px;
+  border-radius: 30px;
+}
+.topic-name > p::before {
+  content: " ";
+  /* border-right: 30px double gainsboro; */
+  background-color: rgba(255, 0, 0, 0.517);
+  width: 100px;
+  height: 20px;
+  position: absolute;
+  bottom: -70px;
+  left: 100px;
+  border-radius: 30px;
+}
+
+.article-content > p,
+.content {
+  text-align: justify;
+  margin-bottom: var(--fourtyPx);
+  font-size: 18px;
+  font-family: "Mulish", sans-serif;
+  line-height: 2;
+}
+
+.sub-heading-1 {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: var(--twentyPx);
+  font-family: "Spartan", sans-serif;
+}
+
+.youtube-video,
+.img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.youtube-video > iframe,
+.img > img {
+  border-radius: 15px;
+  width: 65%;
+  margin: var(--sixtyPx) 0;
+  cursor: zoom-in;
+}
+.content > pre {
+  font-size: 15px;
+  text-align: left;
+}
+
+.content > p {
+  margin-bottom: 15px;
+}
+.content > p:last-child {
+  margin-bottom: 0px;
+}
+
+.authorDetails {
+  display: flex;
+  align-items: center;
+}
+.dummy > img {
+  border-radius: 50%;
+  height: var(--eightyPx);
+  width: var(--eightyPx);
+}
+.comment__section > img {
+  border-radius: 50%;
+  height: var(--fourtyPx);
+  width: var(--fourtyPx);
+}
+
+.authorDetails > .details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+.authorDetails > .details2 {
+  margin-left: 10px;
+}
+.reply {
+  font-size: 12px;
+}
+.prev {
+  width: fit-content;
+  margin-left: var(--fiftyPx);
+  padding: var(--sixteenPx);
+  height: max-content;
+}
+.comment__props {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: var(--fiftyPx);
+  margin-top: var(--tenPx);
+}
+.props {
+  margin-left: var(--sixteenPx);
+  cursor: pointer;
+}
+
+.article-tags {
+  display: flex;
+  margin-bottom: var(--sixtyPx);
+}
+
+.tag {
+  width: 90px;
+  height: var(--fourtyPx);
+  border-radius: var(--twentyPx);
+  background-color: rgba(220, 220, 220, 0.639);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 13px;
+}
+.sub-heading-2 {
+  font-family: "Heebo", sans-serif;
+  font-size: var(--twentyPx);
+  margin-bottom: var(--tenPx);
+  font-weight: bold;
+}
+
+.sideBar {
+  background-color: rgba(220, 220, 220, 0.392);
+  margin-left: 15px;
+  position: relative;
+  border-radius: var(--tenPx);
+  padding: 5px;
+}
+.sideBar::before {
+  content: " ";
+  background-color: rgba(0, 0, 0, 0.751);
+  height: 100%;
+  width: var(--tenPx);
+  position: absolute;
+  top: 0px;
+  left: calc(-1 * var(--twentyPx));
+  border-radius: var(--tenPx);
+}
+
+.sideShadow {
+  box-shadow: -5px -5px 10px rgba(211, 208, 208, 0.603);
+  padding: 12px;
+  border-radius: var(--tenPx);
+  margin-bottom: var(--sixtyPx);
+}
+
+.imgZoomDiv {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  display: none;
+  z-index: 10;
+}
+
+.imgZoomDivCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: xxx-large;
+  color: white;
+  cursor: pointer;
+  height: var(--fiftyPx);
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+.imgZoomDivImg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imgZoomDivImg > img {
+  width: 50vw;
+}
+.nextPrevBtns {
+  display: flex;
+  height: var(--sixtyPx);
+  margin-bottom: var(--sixtyPx);
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.nextPrevBtns > div {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Heebo", sans-serif;
+  border: 2px solid gainsboro;
+  cursor: pointer;
+  border-radius: var(--tenPx);
+  padding: var(--tenPx);
+  width: calc(2 * var(--sixtyPx));
+  color: gray;
+}
+.nextBtn i {
+  margin-left: 15px;
+}
+.prevBtn i {
+  margin-right: 15px;
+}
+
+.constraints {
+  margin-bottom: var(--fourtyPx);
+  padding: 15px;
+  font-style: italic;
+}
+
+.refrence {
+  font-size: var(--sixteenPx);
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+  color: gray;
+  margin-bottom: 5px;
+}
+.easeIn {
+  animation: easeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes easeIn {
+  0% {
+    transform: scale(0.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.share {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  flex-direction: column;
+}
+.share div {
+  display: flex;
+  margin: var(--tenPx);
+  margin-top: 0;
+  align-items: center;
+  cursor: pointer;
+}
+.share div i {
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: var(--tenPx);
+}
+
+.temp1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: var(--twentyPx);
+}
+
+.share {
+  margin-top: var(--sixtyPx);
+}
+.questionLogo{
+  background-color: rgba(255, 0, 0, 0.517);
+    height: var(--eightyPx);
+    width: var(--eightyPx);
+    position: fixed;
+    left: 5vw;
+    top: 80vh;
+    z-index: 5;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px  rgba(255, 0, 0, 1);
+    display: none;
+    
+  }
+  
+  .ques-info{
+  font-weight: bold;
+  background-color: white;
+  width: 250px;
+  font-size: var(--twentyPx);
+  border-radius: var(--tenPx);
+  position: fixed;
+  bottom: calc( 20vh - var(--eightyPx) );
+  left: 12vw;
+  padding: 10px;
+  color: black;
+  z-index: 5;
+  border: 2px solid gainsboro;
+  font-family: "Mulish", sans-serif;
+  display: none;
+}
+
+
+.app_editor {
+  height: 300px;
+  width: 500px;
+}
+
+.app_editor_wrapper {
+  background-color: #cccccc;
+  border-bottom: 1px solid #222222;
+  width: 500px;
+  margin: auto;
+}
+
+
+.run{
+    
+    margin: 10px auto;
+    background-color: rgba(86, 235, 86, 0.432);
+    border-radius: 1px;
+    padding: 10px 15px;
+    width: fit-content;
+    cursor: pointer;
+    border-radius: 10px;
+}
+textarea{
+    display: block;
+    margin: auto;
+    width: 500px;
+    height: 100px;
+    resize: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 8px;
+}
+.code_bg{
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+.code_tabBar{
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    margin-top: -50px;
+    width: 500px;
+    background-color: rgba(82, 82, 82, 0.055);
+    color: rgba(0, 0, 0, 0.479);
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.tabBar_btn{
+    margin-left: 20px;
+    margin-bottom: 4px;
+    letter-spacing: .3px;
+    cursor: pointer;
+}
+
+
+:root{
+    --eightPx:0.5rem; 
+    --sixteenPx:1rem;
+    --eightyPx:5rem;
+    --tenPx:0.625rem;
+    --sixtyPx:3.75rem;
+    --fourtyPx:2.5rem;
+    --twentyPx:1.25rem;
+    --seventyPx:4.37rem;
+    --fiftyPx:3.125rem;
+    --fourteenPx:0.8rem;
+    --twentyEightPx:1.75rem;
+    --twoFourtyPx:15rem;
+    --twoHundred:12rem;
+    --hundredPx:6.25rem;
+    --twelvePx:0.75rem;
+    --thirtyTwo:2rem;
+    --twentyFour:1.5rem;
+}
+
+
+@media only screen and (max-width: 900px){
+    .wrapper{
+        width: 70vw;
+    }
+    .topic-name>p{
+        font-size: var(--fourtyPx);
+    }
+    .article-content>p, .content,.refrence {
+        font-size:var(--fourteenPx);
+    }
+    .sub-heading-1{
+        font-size: var(--twentyEightPx);
+    }
+    .youtube-video>iframe, .img>img{
+        height: var(--twoFourtyPx);
+    }
+    .nextPrevBtns>div,.prevBtn{
+        font-size: var(--fourteenPx);
+        height: var(--fourtyPx);
+        width: var(--hundredPx);
+    }
+    .qoute{
+        font-size: var(--twelvePx);
+    }
+
+    .tag{
+        width: var(--eightyPx);
+    }
+    .Circles{
+        display: none;
+    }
+    .qoute>p::before ,.topic-name > p::before,.topic-name > p::after{
+        display: none;
+    }
+    .landingPg{
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 15vh;
+    }
+    .topic-name > p{
+        text-align: center;
+        padding: 0;
+        margin-bottom: 10vh;
+    }
+    
+    .topic-name{
+        display: flex;
+        justify-content: center;
+    }
+
+    .qoute {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: var(--twentyEightPx);
+
+    }
+
+    .qoute::after{
+        top: 0;
+        right: 10%;
+    }
+    .qoute>p{
+        width: 70%;
+    }
+
+    .ca3-scroll-down-link{
+        left: 50%;
+    }
+
+
+}
+
+@media only screen and (max-width: 780px){
+.app_editor {
+  width: 400px;
+}
+
+.app_editor_wrapper {
+  width: 400px;
+}
+textarea{ 
+    width: 400px;
+}
+.code_tabBar{
+    width: 400px;
+}
+
+}
+
+@media only screen and (max-width: 740px){
+    .share div p {
+        display: none;
+    }
+    .share div i {
+        height: 25px;
+        width: 25px;
+    }
+    
+    .comment{
+        margin-right: 12px;
+    }
+    .ca3-scroll-down-link{
+        bottom: 100px;
+    }
+    .wrapper{
+        padding-top: 0;
+    }
+}
+
+
+/* @media only screen and (max-width: 825px) */
+/* @media only screen and (max-width: 740px) */
+/* @media only screen and (max-width: 680px) */
+/* @media only screen and (max-width: 500px) */
+/* @media only screen and (max-width: 380px) */
+@media only screen and (max-width: 740px){
+    .topic-name>p{
+        font-size: var(--thirtyTwo);
+    }
+    .sub-heading-1{
+        font-size: var(--twentyFour);
+    }
+}
+@media only screen and (max-width: 640px){
+    .topic-name>p{
+        width: 90%;
+    }
+    .content{
+        margin-bottom: var(--thirtyTwo);
+    }
+    .youtube-video>iframe, .img>img{
+        width: 75%;
+        height: 180px;
+    }
+
+    .tag{
+        font-size: var(--fourteenPx);
+        width: var(--eightyPx);
+        height: var(--thirtyTwo);
+    }
+    ol{   
+        padding-left: 20px;
+    }
+    .sideBar::before {
+        width: 7px;
+        left: -14px;
+
+    }
+    .constraints{
+        margin-bottom: var(--thirtyTwo);
+    }
+    .youtube-video > iframe, .img > img{
+        margin: var(--fourtyPx) 0;
+    }
+    .youtube-video>iframe, .img>img {
+        width: 90%;
+        height: 171px;
+    }
+    .app_editor {
+      width: 300px;
+    }
+
+    .app_editor_wrapper {
+      width: 300px;
+    }
+    textarea{ 
+        width: 300px;
+    }
+    .code_tabBar{
+        width: 300px;
+    }
+}
+@media only screen and (max-width: 500px){
+    .wrapper{
+        width: 80%;
+    }
+    .topic-name>p{
+        font-size: var(--twentyEightPx);
+    }
+    .qoute>p {
+        padding-bottom: 60px;
+    }
+}
+
+@media only screen and (max-width: 440px){
+  .app_editor {
+    width: 250px;
+  }
+
+  .app_editor_wrapper {
+    width: 250px;
+  }
+  textarea{ 
+      width: 250px;
+  }
+  .code_tabBar{
+      width: 250px;
+  }
+
+}
+
+@media only screen and (max-width: 410px){
+    .topic-name>p{
+        font-size: var(--twentyFour);
+    }
+    .sub-heading-1{
+        font-size: var(--twentyPx);
+    }
+    .article-content>p, .content, .refrence{
+        font-size: var(--twelvePx);
+    }
+    .nextPrevBtns>div, .prevBtn{
+        width: var(--eightyPx);
+    }
+    .app_editor {
+      width: 150px;
+    }
+
+    .app_editor_wrapper {
+      width: 150px;
+    }
+    textarea{ 
+        width: 150px;
+    }
+    .code_tabBar{
+        width: 150px;
+    }
+    #language{
+        width: 10px;
+    }
+}
+/* @media only screen and (max-width: 325px) */
+@media only screen and (max-width: 365px){
+    
+}
+    </style>
+
+  </head>
+  <body>
+            <div class="article1">
+    <div class="article-1-outerbox">
+        <div class="Circles hide-on-med-and-down">
+            <div class="c1"></div>
+            <div class="c2"></div>
+        </div>
+        <div class="topic-name">
+            <p>Stack to Queue Adapter- Remove Efficient</p> 
+        </div>
+        <a class="ca3-scroll-down-link ca3-scroll-down-arrow " data-ca3_iconfont="ETmodules" data-ca3_icon="">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+        <br><br><br><br>
+        <div class="qoute">
+            <br><br>
+            <p>
+                Programs must be written for the people to be read and only incidentally for machines to execute
+            </p>
+            <i class="fa fa-quote-right qoute-icon"></i>
+        </div>
+    </div>
+    <div class="question-logo"><i class="fa fa-quora"></i></div>
+    <div class="ques-info">Stack to Queue Adapter- Remove Efficient</div>
+    <div class="article-info">
+        <div class="article-divider" style="margin-top:0px ;"></div>
+        <div class="article-content">
+            <div class="sub-heading-1">
+                <p>Introduction:</p>
+            </div>
+            <div class="content">
+                <p>
+                    Welcome back, dear reader. So, how is it going? We hope that you have solved the previous question: <a href="https://www.pepcoding.com/resources/online-java-foundation/stacks-and-queues/stack-to-queue-adapter-add-efficient-official/ojquestion" target="_blank">STACK TO QUEUE ADAPTER: ADD-EFFICIENT</a>. We recommend you solve this problem first as this problem is very similar to the previous one. So, let’s discuss this problem. 
+                </p>
+            </div>
+           
+        </div>
+        <div class="understandingProb">
+            <div class="sub-heading-1">
+                <p>Problem Explanation:</p>
+            </div>
+            <div class="content">
+                <p>
+                    We are given two stacks, one is the main stack and the other is the helper stack. We have to adapt them and make them behave like a queue. Also, we have to take care that the remove method of the queue is efficient i.e. it should be achieved in O(1) time complexity whereas the add method can take O(n) time. If you have solved the previous problem then this is just a piece of cake for you.
+                    <br>
+                    You may refer to the question video to understand the problem completely. The main challenge of this question is to convert the LIFO nature of the stack to the FIFO nature of the queue.
+                </p>
+                <div class="youtube-video">
+                  <iframe width="640" height="360" src="https://www.youtube.com/embed/tL1G0YX0ZZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="approach" id="approach">
+            <div class="sub-heading-1">Approach:</div>
+            <div class="content">
+               <ol>
+                    <li>
+                        Add: Let us consider the following example.
+                        <div class="img"><img src="./images/image1.png" alt="img" /></div>
+                        We have to add these elements to the queue. If we simply add these elements to the main stack then it will be analogous to add them in a queue as adding the elements to the end of the queue is analogous to adding the elements at the top of the stack (see fig-2).
+                        <div class="img"><img src="./images/image2.png" alt="img" /></div>
+                        This is what we did in the previous question when we had to make the add method efficient without taking care of the remove method. Here, the situation is exactly the opposite. If you notice, when we try to remove an element from the queue, we will not be able to remove the element in O(1) time (You know this from the previous question). So, it is clear that we will not insert the elements in this way. So, the question is, how are we going to insert the elements?
+                        <div class="img"><img src="./images/image3.png" alt="img" /></div>
+                        We are trying to insert the same elements as shown above step by step. So, we have inserted the first element 10 into the main stack. Our aim is that when we pop from the main stack, we should get the element at the front of the queue. Why? Well obviously, to make the remove function efficient. If we see in this case the front of the queue is at the top of the main stack. So, there is no problem.
+
+                        <div class="img"><img src="./images/image4.png" alt="img" /></div>
+                        Now we try to add 20 into the queue. So, if we push 20 into the main stack, then the top of the main stack will contain the rear element of the queue rather than the front. So, we pop out all the contents of the main stack and push it into the helper stack. Then, we push the value i.e. 20 into the main stack and pop all the values from the helper stack, and push them into the main stack. We find that the main stack now has the front element of the queue at its top and whenever we try to remove it from the queue, we will be able to remove the front element easily by popping the value from the main stack.  We will keep on doing this and after all the elements are   added, our stacks will look like this:
+
+                        <div class="img"><img src="./images/image5.png" alt="img" /></div>
+                        So, finally, we conclude that to add an element to the queue we will pop out all the elements present in the main stack and push them into the helper stack and then push the given element into the main stack and again pop out all the values from the helper stack and push them into the main stack.
+                        You may refer to the solution video (0:29-2:16) if you have any doubts regarding the add method.
+                        <div class="youtube-video">
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/J8EejK8zvw8?start=29&end=136" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </li>
+                    <li>
+                        Size: The size of the queue will be equal to the size of the main stack at any particular time. So, it is going to be very easy. We just have to return the size of the main stack.
+
+                    </li>
+                    <li>
+                       Peek: As we have already discussed, we have added the elements in such a way that the element at the front of the queue will be at the top of the stack. So, we just have to apply the peek method to the main stack which will return the topmost element of the stack i.e. q[front] (see fig-6).
+                       <div class="img"><img src="./images/image6.png" alt="img" /></div>
+                    </li>
+                    <li>
+                        Remove: Again, we did all the hard work in the add function to make the remove method efficient. So, we know that we just have to pop the element from the main stack to remove an element from the queue (removing the element at the front in the queue). 
+                        <div class="img"><img src="./images/image7.png" alt="img" /></div>
+                        Now that we have understood every method in-depth, let us move to code the solution.
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="pseudoCode article-box-shadow">
+            <div class="sub-heading-1">Pseudo Code:</div>
+            <div class="content">
+                <ol>
+                    <li>
+                        Add: We will not implement the add method directly. Rather, we will first pop all the elements from the main stack and push them into the helper stack. Then, we will add the new element to the main stack and pop all the elements from the helper stack, and push them to the main stack.
+
+                    </li>
+                    <li>
+                        Peek: We will use the peek method of the stack and it will give us the top value of the main stack. This will be the same as the front value of the queue.
+                    </li>
+                    <li>
+                      Size: It is also very simple. Just return the size of the main stack.
+
+                    </li>
+                    <li>iRemove: Simply pop a value from the main stack. This will remove the value from the front of the queue.</li>
+                </ol>
+                
+            </div>
+        </div>
+        <div class='codeEditor' id=>
+            <div class='editorialCode'>
+               import java.io.*;
+                import java.util.*;
+                 
+                public class Main {
+                 
+                  public static class StackToQueueAdapter {
+                    Stack< Integer> mainS;
+                    Stack< Integer> helperS;
+                 
+                    public StackToQueueAdapter() {
+                      mainS = new Stack< >();
+                      helperS = new Stack< >();
+                    }
+                 
+                    int size() {
+                      return mainS.size();
+                    }
+                 
+                    void add(int val) {
+                      while(mainS.size() > 0){
+                        helperS.push(mainS.pop());
+                      }
+                 
+                      mainS.push(val);
+                 
+                      while(helperS.size() > 0){
+                        mainS.push(helperS.pop());
+                      }
+                    }
+                 
+                    int remove() {
+                      if (size() == 0) {
+                        System.out.println("Queue underflow");
+                        return -1;
+                      } else {
+                        return mainS.pop();
+                      }
+                    }
+                 
+                    int peek() {
+                      if (size() == 0) {
+                        System.out.println("Queue underflow");
+                        return -1;
+                      } else {
+                        return mainS.peek();
+                      }
+                    }
+                  }
+                 
+                  public static void main(String[] args) throws Exception {
+                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    StackToQueueAdapter qu = new StackToQueueAdapter();
+                 
+                    String str = br.readLine();
+                    while (str.equals("quit") == false) {
+                      if (str.startsWith("add")) {
+                        int val = Integer.parseInt(str.split(" ")[1]);
+                        qu.add(val);
+                      } else if (str.startsWith("remove")) {
+                        int val = qu.remove();
+                        if (val != -1) {
+                          System.out.println(val);
+                        }
+                      } else if (str.startsWith("peek")) {
+                        int val = qu.peek();
+                        if (val != -1) {
+                          System.out.println(val);
+                        }
+                      } else if (str.startsWith("size")) {
+                        System.out.println(qu.size());
+                      }
+                      str = br.readLine();
+                    }
+                  }
+                }
+
+            </div>
+            <pre class='output'>
+            </pre>
+            <span type='text' class='language' style='width:40%;margin-right:5%'>java</span>;
+            <span type='text' style='width:40%' class='canRunCode' name='canRunCode'>true</span>";
+        </div>
+        <div class="content">
+            <p>Dear reader, we hope that you got the solution and the code. Still, if you have any doubts regarding the solution or the code you may watch the complete solution video to understand the concept properly.
+            </p>
+            <div class="youtube-video">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/J8EejK8zvw8?" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+      
+        <div class="analysis">
+          <div class="sub-heading-1">
+                <p>Time  and Space Complexity Analysis:</p>
+            </div>
+            <div class="sub-heading-2">Space Complexity:</div>
+            <div class="content">
+              <p> Well the space complexity can be considered as O(n) as we are using two stacks for implementing the queue. But, these two stacks are given to us in our question, and apart from these stacks, we have not used any extra data structure or memory to implement the queue. Since the data structure that is given in the question (2 stacks in this case) is not considered in the space complexity, the space complexity will be O(1).</p>
+            </div>
+
+            <div class="sub-heading-2">Time Complexity:</div>
+            <div class="content">
+              <ol>
+                <li>Add: The time complexity is O(n) as we are popping all the values from the main stack and pushing them into the helper stack and doing vice-versa. So, the time complexity becomes n+n=2n=O(n).</li>
+                <li>Remove: The time complexity for this method is O(1) as we just popped a value from the main stack.</li>
+                <li>Size: The time complexity is O(1) as we just return the size of the main stack.</li>
+                <li>Peek: The time complexity is O(1) as we just use the peek method of the main stack.</li>
+
+              </ol>
+              <p>So, dear reader, we hope that you have understood the entire solution and the code as well as the time and space complexity analysis. If you still have any doubts you may refer to the complete solution video to clear all your doubts.</p>
+            </div>  
+        </div>
+       
+        <div class="article-tags">
+            <div class="tag">Functions and Arrays</div>
+            <div class="tag">Classes and Objects in Java</div>
+            <div class="tag">Stacks and Queues.</div>
+        </div>
+        <div class="author">
+            <div class="sub-heading-1">AUTHOR</div>
+            <div class="article-contributor">
+                <div class="dummy"><img src="{{!--article contributor image--}}" alt="" /></div>
+                <div class="details">
+                    <span> <a href="{{!--article contributor linkedin profile--}}">Guneet Malhotra</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="share-options">
+            <p class="share-options-heading">Share this article</p>
+            <div class="">
+                <div class="span"><i class="fa fa-facebook"></i>
+                    <p class="social-media-name">Facebook</p>
+                </div>
+                <div class="span"><i class="fa fa-twitter"></i>
+                    <p class="social-media-name">Twitter</p>
+                </div>
+                <div class="span"><i class="fa fa-instagram"></i>
+                    <p class="social-media-name">Instagram</p>
+                </div>
+                <div class="span"><i class="fa fa-whatsapp"></i>
+                    <p class="social-media-name">Whatsapp</p>
+                </div>
+                <div class="span"><i class="fa fa-linkedin"></i>
+                    <p class="social-media-name">Linkedin</p>
+                </div>
+            </div>
+        </div>
+        <div class="lineBreak" style="margin-top: 30px;"></div>
+        <div class="img-zoom-div">
+            <div class="img-zoom-div-close-btn"><i class="fa fa-times"></i></div>
+            <div class="img-zoom-div-img"><img src="" alt="" /></div>
+        </div>
+    </div>
+</div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Fredoka+One&family=Marck+Script&family=Merienda:wght@700&family=Parisienne&family=Source+Code+Pro:wght@600&family=Varela+Round&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.2.0/styles/monokai.css" />
+<link
+    href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&family=Source+Code+Pro:wght@300&family=Spartan:wght@500&display=swap"
+    rel="stylesheet">
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+    <script src="./closeZoomImgDiv.js"></script>
+    <script src="./bookmark.js"></script>
+    <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+
+
+    var aceEditorInstance = ace.edit( "editor1" );
+
+
+aceEditorInstance.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+
+// editor 2
+  var aceEditorInstance2 = ace.edit( "editor2" );
+
+
+aceEditorInstance2.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance2.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+
+// editor 3
+  var aceEditorInstance3 = ace.edit( "editor3" );
+
+
+aceEditorInstance3.setTheme("ace/theme/twilight");
+// inline must be true to syntax highlight
+aceEditorInstance3.getSession().setMode( { path: "ace/mode/c_cpp", inline: true } );
+/**
+ * Global variable to store the ids of the status of the current dragged ace editor.
+ */
+window.draggingAceEditor = {};
+
+function makeAceEditorResizable(editor){
+    var id_editor = editor.container.id;
+    var id_dragbar = '#' + id_editor + '_dragbar';
+    var id_wrapper = '#' + id_editor + '_wrapper';
+    var wpoffset = 0;
+    window.draggingAceEditor[id_editor] = false;
+
+    $(id_dragbar).mousedown(function(e) {
+        e.preventDefault();
+
+        window.draggingAceEditor[id_editor] = true;
+    
+        var _editor = $('#' + id_editor);
+        var top_offset = _editor.offset().top - wpoffset;
+    
+        // Set editor opacity to 0 to make transparent so our wrapper div shows
+        _editor.css('opacity', 0);
+    
+        // handle mouse movement
+        $(document).mousemove(function(e){
+            var actualY = e.pageY - wpoffset;
+            // editor height
+            var eheight = actualY - top_offset;
+            
+            // Set wrapper height
+            $(id_wrapper).css('height', eheight);
+            
+            // Set dragbar opacity while dragging (set to 0 to not show)
+            $(id_dragbar).css('opacity', 0.15);
+        });
+    });
+    
+    $(document).mouseup(function(e){
+        if (window.draggingAceEditor[id_editor])
+        {
+            var ctx_editor = $('#' + id_editor);
+    
+            var actualY = e.pageY - wpoffset;
+            var top_offset = ctx_editor.offset().top - wpoffset;
+            var eheight = actualY - top_offset;
+    
+            $( document ).unbind('mousemove');
+            
+            // Set dragbar opacity back to 1
+            $(id_dragbar).css('opacity', 1);
+            
+            // Set height on actual editor element, and opacity back to 1
+            ctx_editor.css('height', eheight).css('opacity', 1);
+            
+            // Trigger ace editor resize()
+            editor.resize();
+
+            window.draggingAceEditor[id_editor] = false;
+        }
+    });
+}
+
+
+makeAceEditorResizable(aceEditorInstance);
+
+
+
+</script>
+
+<script>
+    var run = document.getElementsByClassName('run')[0]
+    var input = document.getElementById('custom_input')
+    var language = document.getElementById('language')
+    
+
+    run.addEventListener('click', function(){
+        
+        var unformatted = document.getElementById('editor1').innerText
+        var formatted = unformatted.split("\n")
+        var final = []
+        formatted.forEach(ele=>{
+            if(!parseInt(ele))
+            final.push(ele)
+        
+        })
+        final = final.join(' ')
+        
+        var input_text = input.value
+        var final_input_text = input_text.split('\n').join(' ')
+
+
+         
+        //language
+        const languageValue = language.options[language.selectedIndex].value;
+        //const text = language.options[language.selectedIndex].text;
+        
+        //fetch statement here...
+
+        // fetch('/compileCode',{
+        //     method:'post',
+        //     headers:{
+        //         'Content-Type':'appliation/json'
+        //     },
+        //     body:JSON.stringify({
+        //         input:final_input_text,
+        //         code:final,
+        //         language:languageValue
+        //     })
+        // })
+
+             
+        alert(JSON.stringify({"code":final, "testcase":final_input_text, "language": languageValue}))
+        }
+    )
+</script>
+<script>
+    //tabbar btn control
+    function tabBar(index){
+       
+        if(index===0){ 
+            // show input textarea
+            document.getElementById('custom_output').style.display='none'
+            document.getElementById('custom_input').style.display='block'
+            document.getElementById('tabBar_0').style.color='rgba(0, 0, 0, 1)'
+            document.getElementById('tabBar_1').style.color='rgba(0, 0, 0, 0.479)'
+        }
+        else{
+            // show output textarea
+            document.getElementById('custom_output').style.display='block'
+            document.getElementById('custom_input').style.display='none'
+            document.getElementById('tabBar_1').style.color='rgba(0, 0, 0, 1)'
+            document.getElementById('tabBar_0').style.color='rgba(0, 0, 0, 0.479)'
+        }
+    }
+    
+</script>
+  </body>
+</html>
